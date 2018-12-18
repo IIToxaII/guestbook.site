@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName guestbook.site
+    DocumentRoot /media/sf_Servers/domains/guestbook.site/web
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<Directory "/media/sf_Servers/domains/guestbook.site/web">
+    RewriteEngine on
+    Require all granted
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . index.php
+</Directory>
